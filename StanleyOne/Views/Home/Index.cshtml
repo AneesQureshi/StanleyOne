@@ -1,6 +1,7 @@
 ﻿@model StanleyOne.Models.ContactUsModel
 
 @{
+    ViewBag.Title = "Index";
     Layout = null;
 }
 
@@ -443,12 +444,11 @@
 
                     <div class="col-lg-5 col-md-8">
                         <div class="form">
-                            <div id="sendmessage">Your message has been sent. Thank you!</div>
-                            <div id="errormessage"></div>
 
 
 
-                            @*<form action="" method="post" role="form" class="contactForm">
+
+                            <form action="" method="post" role="form" class="contactForm">
                                 <div class="form-group">
                                     <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                                     <div class="validation"></div>
@@ -462,32 +462,34 @@
                                     <div class="validation"></div>
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                                    <textarea class="form-control" name="message" rows="5" id="message" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
                                     <div class="validation"></div>
                                 </div>
                                 <div class="text-center"><button type="submit">Send Message</button></div>
 
-                            </form>*@
+                            </form>
+                            <br>
+                            <div id="sendmessage">Your message has been sent. Thank you!</div>
+                            <div id="errormessage">Oops! Please send again.</div>
 
-
-                            @using (Html.BeginForm("ContactUs", "Home", FormMethod.Post))
+                            @*@using (Html.BeginForm("ContactUs", "Home", FormMethod.Post))
         {
 
 
-                        <div class="form-group">
-                            @Html.TextBoxFor(model => model.userName, new { @class = "form-control", @id = "name", @placeholder = "Your Name" })
-                        </div>
-                        <div class="form-group">
-                            @Html.TextBoxFor(model => model.email, new { @class = "form-control", @id = "title", @placeholder = "Your Email" })
-                        </div>
-                        <div class="form-group">
-                            @Html.TextBoxFor(model => model.Subject, new { @class = "form-control", @id = "title", @placeholder = "Subject" })
-                        </div>
-                        <div class="form-group">
-                            @Html.TextAreaFor(model => model.Message, new { @class = "form-control", @id = "title", @placeholder = "Message" })
-                        </div>
-                        <div class="text-center"><button type="submit">Send Message</button></div>
-}
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.userName, new { @class = "form-control", @id = "name", @placeholder = "Your Name" })
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.email, new { @class = "form-control", @id = "title", @placeholder = "Your Email" })
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.Subject, new { @class = "form-control", @id = "title", @placeholder = "Subject" })
+        </div>
+        <div class="form-group">
+            @Html.TextAreaFor(model => model.Message, new { @class = "form-control", @id = "title", @placeholder = "Message" })
+        </div>
+        <div class="text-center"><button type="submit">Send Message</button></div>
+        }*@
 
                         </div>
 
@@ -546,5 +548,6 @@
     <!-- Template Main Javascript File -->
     <script src="../../stanley/js/main.js"></script>
 
+   
 </body>
 </html>

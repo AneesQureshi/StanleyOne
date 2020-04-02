@@ -1,8 +1,9 @@
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
   "use strict";
 
   //Contact
-  $('form.contactForm').submit(function() {
+  $('form.contactForm').submit(function () {
+      
     var f = $(this).find('.form-group'),
       ferror = false,
       emailExp = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i;
@@ -90,24 +91,43 @@ jQuery(document).ready(function($) {
     });
     if (ferror) return false;
     else var str = $(this).serialize();
-    var action = $(this).attr('action');
-    if( ! action ) {
-      action = 'contactform/contactform.php';
-    }
+
+    //var res = str.split("&");
+    //var name = res[0];
+    //var email = res[1];
+    //var subject = res[2];
+    //var message = res[3];
+    //var action = $(this).attr('action');
+    //if( ! action ) {
+    //  action = 'contactform/contactform.php';
+    //}
+
+    
+
     $.ajax({
-      type: "POST",
-      url: action,
-      data: str,
-      success: function(msg) {
-        // alert(msg);
-        if (msg == 'OK') {
+        //url: "@(Url.Action('ContactUs', 'Home'))",
+        url: "/Home/ContactUs/",
+        type: "POST",
+        //data: JSON.stringify({ 'name': name, 'email': email, 'subject': subject, 'message': message }),
+        data: JSON.stringify({
+            name: $("#name").val(), //Reading text box values using Jquery   
+            email: $("#email").val(),
+            subject: $("#subject").val(),
+            message: $("#message").val()
+
+
+        }),
+        contentType: "application/json; charset=utf-8",
+      success: function(data) {
+
+          if (data != null ) {
           $("#sendmessage").addClass("show");
           $("#errormessage").removeClass("show");
           $('.contactForm').find("input, textarea").val("");
         } else {
           $("#sendmessage").removeClass("show");
           $("#errormessage").addClass("show");
-          $('#errormessage').html(msg);
+          //$('#errormessage').html(msg);
         }
 
       }
@@ -116,3 +136,5 @@ jQuery(document).ready(function($) {
   });
 
 });
+
+

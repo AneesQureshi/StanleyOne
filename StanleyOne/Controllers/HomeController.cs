@@ -15,12 +15,20 @@ namespace StanleyOne.Controllers
             return View();
         }
 
-        public ActionResult ContactUs(ContactUsModel contact)
+        public ActionResult ContactUs(string name,string email,string subject,string message)
             {
-
+            ContactUsModel contact = new ContactUsModel();
+            contact.userName = name;
+            contact.email = email;
+            contact.Subject = subject;
+            contact.Message = message;
             string result = contact.ContactUs(contact);
-
-            return View();
+            if(result=="success" && result != null)
+                {
+                ViewBag.successMessage = "Success";
+               
+                }
+            return  RedirectToAction("Index");
             }
     }
 }

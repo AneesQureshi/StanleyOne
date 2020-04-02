@@ -24,19 +24,15 @@ namespace StanleyOne.Models
             string result = "";
             try
                 {
-               
+
                 string service = ApiPath.ContactUsPath;
                 var response = ApiConnect.PostData(service, contact);
                 if (response != null || response.IsSuccessStatusCode)
                     {
                     string jresult = response.Content.ReadAsStringAsync().Result;
-                    contact = JsonConvert.DeserializeObject<ContactUsModel>(jresult);
+                    result = JsonConvert.DeserializeObject<string>(jresult);
+
                     }
-                if (response != null || response.IsSuccessStatusCode)
-                    {
-                    result = response.Content.ReadAsStringAsync().Result;
-                    }
-                return result;
                 }
             catch (Exception ex)
                 {
