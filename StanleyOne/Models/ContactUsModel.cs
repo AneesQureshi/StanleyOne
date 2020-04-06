@@ -22,11 +22,12 @@ namespace StanleyOne.Models
         public string ContactUs(ContactUsModel contact)
             {
             string result = "";
+            
             try
                 {
 
                 string service = ApiPath.ContactUsPath;
-                var response = ApiConnect.PostData(service, contact);
+                    var   response = ApiConnect.PostData(service, contact);
                 if (response != null || response.IsSuccessStatusCode)
                     {
                     string jresult = response.Content.ReadAsStringAsync().Result;
@@ -36,6 +37,7 @@ namespace StanleyOne.Models
                 }
             catch (Exception ex)
                 {
+                
                 string msg = ex.Message;
                 }
             return result;

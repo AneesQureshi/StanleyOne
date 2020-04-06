@@ -23,12 +23,16 @@ namespace StanleyOne.Controllers
             contact.Subject = subject;
             contact.Message = message;
             string result = contact.ContactUs(contact);
-            if(result=="success" && result != null)
+            if(result=="success")
                 {
-                ViewBag.successMessage = "Success";
-               
+                return Json(result, JsonRequestBehavior.AllowGet);
                 }
-            return  RedirectToAction("Index");
+            else
+                {
+                return Json("fail", JsonRequestBehavior.AllowGet);
+                }
+
+           
             }
     }
 }

@@ -118,16 +118,18 @@ jQuery(document).ready(function ($) {
 
         }),
         contentType: "application/json; charset=utf-8",
-      success: function(data) {
-
-          if (data != null ) {
+        dataType: "json",  
+       
+        success: function (data) {
+           
+          if (data =="success" ) {
           $("#sendmessage").addClass("show");
           $("#errormessage").removeClass("show");
           $('.contactForm').find("input, textarea").val("");
         } else {
           $("#sendmessage").removeClass("show");
           $("#errormessage").addClass("show");
-          //$('#errormessage').html(msg);
+          
         }
 
       }
